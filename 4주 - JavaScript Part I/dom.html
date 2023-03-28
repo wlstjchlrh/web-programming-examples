@@ -9,8 +9,8 @@
 
     <p id="my-paragraph">This is a sample paragraph.</p>
     <button id="my-button">Click me!</button>
-    <p id="action-status">Action Status:</p>
+    <p id="action-status">Action Status:</p> //dom구성이 생성되기 이전에 script가 들어가면 실행이 안됨다
 
-    <script src="dom.js"></script>
+    <script src="dom.js"></script> //원래 script는 head안에 넣어야되는데 왜 끝에 넣었을까?-위에 넣으면 작동 안됨(위부터 순차 실행때문에)
   </body>
 </html>
