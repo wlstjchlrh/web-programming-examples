@@ -6,19 +6,32 @@
     <script>
       window.onload = function () {
         // DOM 조작하기
+        let statusNum = 1;
         const myParagraph = document.getElementById("my-paragraph");
 
         myParagraph.innerHTML = "This is a new paragraph.";
         myParagraph.style.color = "red";
 
         // 이벤트 처리 방법
-        const myButton = document.getElementById("my-button");
+        const addButton = document.getElementById("add-button");
 
-        myButton.addEventListener("click", function () {
+        addButton.addEventListener("click", function () {
           const actionStatus = document.getElementById("action-status");
+
           let clickStatus = document.createElement("div");
-          clickStatus.innerHTML = "Button clicked!";
+          clickStatus.setAttribute("class", "status");
+          clickStatus.innerHTML = String(statusNum) + ": Button clicked!";
+          statusNum += 1;
+
           actionStatus.appendChild(clickStatus);
+        });
+
+        const delButton = document.getElementById("del-button");
+
+        delButton.addEventListener("click", function () {
+          const status = document.getElementsByClassName("status");
+          status[status.length - 1].remove();
+          statusNum -= 1;
         });
       };
     </script>
@@ -27,7 +40,8 @@
     <h1>JavaScript Sample</h1>
 
     <p id="my-paragraph">This is a sample paragraph.</p>
-    <button id="my-button">Click me!</button>
+    <button id="add-button">Add Status</button>
+    <button id="del-button">Delete Status</button>
     <p id="action-status">Action Status:</p>
   </body>
 </html>
